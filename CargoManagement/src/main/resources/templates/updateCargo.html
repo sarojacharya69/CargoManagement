@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+         
+
+    <title>Cargo Management System</title>
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: sans-serif;
+          
+        }
+        body{
+          display:flex;
+          align-items: center;
+          justify-content: center;
+          height:100vh;
+          background-image:url('aboutus.jpg');
+          background-size: cover;
+          
+        }
+        
+        .container{
+          max-width: 650px;
+          padding: 28px;
+          margin: 0 28px;
+          box-shadow: 0 15px 20px #ABB2B9;
+          background-color: white;
+        }
+        h2{
+          font-size:26px;
+          font-weight:600;
+          text-align: left;
+          color: #2f4f4f;
+          padding-bottom: 8px;
+          border-bottom: 1px solid silver;
+        }
+        .content{
+          display:flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          padding: 20px 0;
+          
+        }
+        .input-box{
+          display:flex;
+          flex-wrap: wrap;
+          width: 50%;
+          padding-bottom: 10px;
+          
+        }
+        .input-box:nth-child(2n){
+          justify-content: flex-end;
+        }
+        .input-box label, .gender-title{
+          width: 95%;
+          color: #2f4f4f;
+          font-weight: bold;
+          margin: 5px 0;
+        }
+        
+        .input-box input{
+          height: 40px;
+          width: 95%;
+          padding: 0 10px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          outline:none;
+          
+        }
+        .input-box input:is(:focus, :valid){
+          box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+          
+        }
+        
+        .button-container{
+          margin: 15px 0;
+          
+        }
+        .button-container button{
+          width:100%;
+          margin-top: 10px;
+          padding: 10px;
+          display: block;
+          font-size: 20px;
+          color: #fff;
+          border:none;
+          border-radius: 5px;
+          background-image:linear-gradient(to right, #aa076b, #61045f);
+          
+        }
+        .button-container button:hover{
+          background-image: linear-gradient(to right, #61045f, #aa076b);
+          
+        }
+        @media(max-width:600px){
+          .container{
+          min-width:280px;
+          
+          }
+          .content{
+          max-height: 380px;
+          overflow:auto;
+          }
+          .input-box{
+          margin-bottom:12px;
+          width:100%;
+          }
+          .input-box:nth-child(2n){
+          justify-content:space-between;
+          }
+          
+          
+          
+        }
+        </style>
+       
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="Admin">Home</a>
+        </li>
+
+        <li class="nav-item ">
+            <a class="nav-link" aria-current="page" href="getusers">Customer List</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" aria-current="page" href="getCargo">Cargo</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" aria-current="page" href="getAllShipping">Shipping List</a>
+        </li>
+
+        <li class="nav-item ">
+            <a class="nav-link" aria-current="page" href="getAllTrackingInfo"> Track&Trace</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+        <li class="nav-item">
+         <a class="nav-link" aria-current="page" href="/">SignOut</a>
+        </li>
+         </ul>
+    </ul>
+    
+
+</nav>
+
+
+      <div class="container">
+
+         
+            
+
+             <form th:action="@{/saveCargo}" method="post" th:object="${scat}">
+                <h2>Edit Cost Here</h2>
+                <div class ="content">
+                 <input type="hidden" name="sbid" th:value="${scat.sbid}"/>
+                 <div class="input-box">
+                     <label for="weight" class="form-label">Weight</label>
+                     </label> <input type="text"id="weight"  name="weight"  placeholder = "Enter Weight" th:value="${scat.weight}">
+                 </div>
+                 <div class="input-box">
+                     <label for="cost" class="form-label">Cost($)</label>
+                     </label> <input type="text"id="cost"  name="cost"  placeholder = "Enter Cost" th:value="${scat.cost}">
+                 </div>
+                 <div class="input-box">
+                     <label for="description" class="form-label">Description</label>
+                     </label> <input type="text" id="description" name="description" placeholder = "Enter Description" th:value="${scat.description}">
+                 </div>
+
+                 <div class="button-container">
+                 <button type="submit" class="btn btn-primary">UpDate Cost</button>
+                 </div>
+                 </div>
+             </form>
+         </div>
+</body>
+
+</html>

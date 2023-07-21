@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  <link rel="stylesheet" type ="text/css" href="css/dash.css">
+  <link rel="stylesheet" type ="text/css" href="css/pay.css">
+  <title>Cargo Management System</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="DashBoard">Home</a>
+    </li>
+
+    <li class="nav-item ">
+      <a class="nav-link"aria-current="page" href="getCargoMember">Cargo Service</a>
+    </li>
+
+    <li class="nav-item ">
+      <a class="nav-link"aria-current="page" href="shippingForm">Create Cargo</a>
+    </li>
+
+    <li class="nav-item ">
+      <a class="nav-link"aria-current="page" href="#"> My Shipping List</a>
+    </li>
+    </li>
+    <a class="nav-link"aria-current="page" href="getAllTrackingInfo"> Track&Trace</a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="/">SignOut</a>
+    </li>
+  </ul>
+</nav>
+
+
+<div class="this-wont-center" style="display: flex; justify-content: center; align-items: center;">
+  <h3 class="text-inside-will-center" th:text="${msg}"></h3>
+</div>
+
+<h2>Responsive Checkout Form</h2>
+
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+        <form  th:action="@{paymentSuccess}" method="Get" th:object="${ship}">
+           <div class="row">
+           <div class="col-50">
+            <h3>Order Details</h3>
+            <label for="senderName"><i class="fa fa-user"></i>Sender Name</label>
+            <input type="text" id="senderName"placeholder="senderName" th:field="*{senderName}">
+            <label for="senderName"><i class="fa fa-user"></i>Receiver Name</label>
+            <input type="text" id="receiverName"placeholder="receiverName" th:field="*{receiverName}">
+             <label for="receiverAddress"><i class="fa fa-user"></i>Receiver Address</label>
+            <input type="text" id="receiverAddress"placeholder="receiverAddress" th:field="*{receiverAddress}">
+             <label for="receiverPhone"><i class="fa fa-user"></i>Receiver Phone</label>
+            <input type="text" id="receiverPhone"placeholder="receiverPhone" th:field="*{receiverPhone}">
+             <label for="weight"><i class="fa fa-user"></i>Total Bill Amount ($)</label>
+            <input type="text" id="weight"placeholder="weight" th:field="*{weight}">
+            <div class="row">
+            </div>
+            <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+              <label>
+                <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+              </label>
+              <input type="submit" value="Continue to checkout" class="btn">
+            </div>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
